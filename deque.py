@@ -20,7 +20,7 @@ class ArrayDeque:
         self.size = 0
 
     def __len__(self):
-        return len(self._first) + len(self._last)
+        return self.size
 
     def _first_is_empty(self):
         return len(self._first) == 0
@@ -30,9 +30,11 @@ class ArrayDeque:
 
     def add_first(self, e):
         self._first.append(e)
+        self.size += 1
 
     def add_last(self, e):
         self._last.append(e)
+        self.size += 1
 
     def first(self):
         if self.is_empty():
@@ -57,8 +59,10 @@ class ArrayDeque:
         if self.is_empty():
             raise Empty("The deque is empty.")
         if not self._first_is_empty():
+            self.size -= 1
             return self._first.pop()
         else:
             value = self._last[0]
             self._last[0] = None
+            self.size -= 1
             return value

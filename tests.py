@@ -119,6 +119,39 @@ class MyTestCase(unittest.TestCase):
 
     # Testing the two sides
 
+    def test_adding_two_items_and_deleting_twice_in_opposite_directions(self):
+        self.d.add_first(5)
+        self.d.delete_last()
+        self.d.add_last(9)
+        self.assertEqual(self.d.delete_first(), 9)
+
+    def test_opposite_adding_two_items_and_deleting_twice_in_opposite_directions(self):
+        self.d.add_last(5)
+        self.d.delete_first()
+        self.d.add_first(9)
+        self.assertEqual(self.d.delete_last(), 9)
+
+    def test_adding_four_items_and_deleting_twice_in_opposite_directions(self):
+        self.d.add_last(5)
+        self.d.delete_first()
+        self.d.add_first(9)
+        self.d.delete_last()
+        self.d.add_first(11)
+        self.assertEqual(self.d.delete_last(), 11)
+        self.d.add_first(19)
+        self.assertEqual(self.d.delete_first(), 19)
+
+    def test_first_after_adding_two_items_last_and_deleting_first(self):
+        self.d.add_last(5)
+        self.d.delete_first()
+        self.d.add_last(8)
+        self.assertEqual(self.d.first(), 8)
+
+    def test_first_after_adding_two_items_first_and_deleting_last(self):
+        self.d.add_first(5)
+        self.d.delete_last()
+        self.d.add_first(8)
+        self.assertEqual(self.d.last(), 8)
 
 if __name__ == '__main__':
     unittest.main()

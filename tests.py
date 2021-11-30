@@ -60,6 +60,8 @@ class MyTestCase(unittest.TestCase):
         self.d.add_last(9)
         self.assertEqual(self.d.first(), 5)
 
+    # Delete first tests
+
     def test_delete_first_removes_first(self):
         self.d.add_first(7)
         self.assertEqual(self.d.delete_first(), 7)
@@ -82,6 +84,38 @@ class MyTestCase(unittest.TestCase):
         self.d.delete_first()
         with self.assertRaises(Empty):
             self.d.first()
+
+    def test_delete_first_makes_last_empty(self):
+        self.d.add_last(7)
+        self.d.delete_first()
+        with self.assertRaises(Empty):
+            self.d.last()
+
+
+    # Delete last tests
+
+    def test_delete_last_removes_last(self):
+        self.d.add_last(7)
+        self.assertEqual(self.d.delete_last(), 7)
+
+    def test_delete_last_deletes_first_if_its_the_only_element(self):
+        self.d.add_first(6)
+        self.assertEqual(self.d.delete_last(), 6)
+
+    def test_delete_last_deletes_first_and_reports_accurate_size(self):
+        self.d.add_first(6)
+        self.d.delete_last()
+        self.assertEqual(len(self.d), 0)
+
+    def test_raise_error_if_deleting_last_from_empty_list(self):
+        with self.assertRaises(Empty):
+            self.d.delete_last()
+
+    def test_delete_last_makes_last_empty(self):
+        self.d.add_last(7)
+        self.d.delete_last()
+        with self.assertRaises(Empty):
+            self.d.last()
 
 
 if __name__ == '__main__':

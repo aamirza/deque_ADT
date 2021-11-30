@@ -66,3 +66,6 @@ class ArrayDeque:
             self._last[0] = None
             self.size -= 1
             return value
+
+    def delete_last(self):
+        pass

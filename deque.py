@@ -68,4 +68,13 @@ class ArrayDeque:
             return value
 
     def delete_last(self):
-        pass
+        if self.is_empty():
+            raise Empty("The deque is empty.")
+        if not self._last_is_empty():
+            self.size -= 1
+            return self._last.pop()
+        else:
+            value = self._first[0]
+            self._first[0] = None
+            self.size -= 1
+            return value

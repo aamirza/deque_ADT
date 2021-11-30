@@ -117,6 +117,8 @@ class MyTestCase(unittest.TestCase):
         with self.assertRaises(Empty):
             self.d.last()
 
+    # Testing the two sides
+
 
 if __name__ == '__main__':
     unittest.main()

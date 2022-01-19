@@ -9,6 +9,14 @@
 # is_empty
 # len
 
+# Implement:
+    # Index lookup, arbitrary entry by index
+    # Clear, clear all contents
+    # Rotate
+    # Remove, remove first matching content
+    # Count, count number of matches
+
+
 class Empty(Exception):
     pass
 
